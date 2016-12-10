@@ -20,7 +20,7 @@ describe('sync', () => {
 
     return testStore
       .defineDriver(syncDriver)
-      .then(() => new Promise(resolve => setTimeout(resolve, 500)))
+      .then(() => new Promise(resolve => setTimeout(resolve)))
       .then(() => testStore.setDriver('webExtensionSyncStorage'));
   });
 

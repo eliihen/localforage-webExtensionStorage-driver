@@ -20,7 +20,7 @@ describe('local', () => {
 
     return testStore
       .defineDriver(localDriver)
-      .then(() => new Promise(resolve => setTimeout(resolve, 500)))
+      .then(() => new Promise(resolve => setTimeout(resolve)))
       .then(() => testStore.setDriver('webExtensionLocalStorage'));
   });
 
