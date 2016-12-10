@@ -1,0 +1,7 @@
+node_modules
+# Ignore root dir src files, but include src directory files with same name
+local.js
+sync.js
+index.js
+!src/*
+
