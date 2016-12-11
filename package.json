@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "jest --coverage; npm run lint",
+    "test": "jest --coverage",
     "build": "babel src --out-dir .",
     "lint": "eslint src/",
     "prepublish": "npm test; npm run build"
