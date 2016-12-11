@@ -5,3 +5,4 @@ sync.js
 index.js
 !src/*
 
+coverage/
