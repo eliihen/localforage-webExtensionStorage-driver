@@ -1,8 +1,8 @@
-const getMockResult = '"qrux"';
-const getMockResultObject = JSON.stringify({
+const getMockResult = { foo: 'qrux' };
+const getMockResultObject = {
   foobar: "duffman",
   walpole: "shiv",
-});
+};
 
 export default function resetMocks() {
   jest.resetAllMocks();
@@ -20,7 +20,7 @@ export default function resetMocks() {
     set: jest.fn(() => Promise.resolve()),
   };
 
-  window.chrome = {
+  window.chrome = window.browser = {
     storage: {
       local: api,
       sync: api,

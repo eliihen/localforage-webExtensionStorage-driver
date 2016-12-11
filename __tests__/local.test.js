@@ -49,7 +49,7 @@ describe('local', () => {
       return testStore.setItem('foo', 'bar', spy).then(() => {
         expect(spy).toHaveBeenCalled();
         expect(window.chrome.storage.local.set).toHaveBeenCalledWith({
-          foo: '"bar"'
+          foo: 'bar'
         });
       });
     });
@@ -60,7 +60,7 @@ describe('local', () => {
 
       return result.then(() => {
         expect(window.chrome.storage.local.set).toHaveBeenCalledWith({
-          foo: '"bar2"'
+          foo: 'bar2'
         });
       });
     });

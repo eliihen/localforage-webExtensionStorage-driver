@@ -1,20 +1,19 @@
 export default {
   _driver: 'webExtensionLocalStorage',
-  _support: !!chrome && !!chrome.storage && !!chrome.storage.local,
+  _support: !!(chrome && chrome.storage && chrome.storage.local),
   _initStorage() {
     return Promise.resolve();
   },
   clear(callback) {
-    chrome.storage.local.clear();
+    browser.storage.local.clear();
 
     if (callback) callback();
 
     return Promise.resolve();
   },
   iterate(iterator, callback) {
-    return chrome.storage.local
+    return browser.storage.local
       .get(null)
-      .then(JSON.parse)
       .then(items => {
         const keys = Object.keys(items);
 
@@ -24,15 +23,16 @@ export default {
       });
   },
   getItem(key, callback) {
-    return chrome.storage.local
+    return browser.storage.local
       .get(key)
-      .then(JSON.parse)
+      .then(result => (
+        typeof key === 'string' ? result[key] : result
+      ))
       .then(callback);
   },
   key(n, callback) {
-    return chrome.storage.local
+    return browser.storage.local
       .get(null)
-      .then(JSON.parse)
       .then(results => {
         const key = Object.keys(results)[n];
 
@@ -42,9 +42,8 @@ export default {
       });
   },
   keys(callback) {
-    return chrome.storage.local
+    return browser.storage.local
       .get(null)
-      .then(JSON.parse)
       .then(results => {
         const keys = Object.keys(results);
 
@@ -54,9 +53,8 @@ export default {
       });
   },
   length(callback) {
-    return chrome.storage.local
+    return browser.storage.local
       .get(null)
-      .then(JSON.parse)
       .then(results => {
         const length = Object.keys(results).length;
 
@@ -66,14 +64,14 @@ export default {
       });
   },
   removeItem(key, callback) {
-    return chrome.storage.local
+    return browser.storage.local
       .remove(key)
       .then(callback);
   },
   setItem(key, value, callback) {
-    return chrome.storage.local
-      .set({[key]: JSON.stringify(value)})
+    return browser.storage.local
+      .set({ [key]: value })
       .then(callback);
-  }
-}
+  },
+};
 
