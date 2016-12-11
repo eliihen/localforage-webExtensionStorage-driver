@@ -1,11 +1,12 @@
 {
   "name": "localforage-webextensionstorage-driver",
   "version": "1.0.0",
-  "description": "",
+  "description": "LocalForage storage driver for WebExtension chrome.storage APIs",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "babel src --out-dir ."
+    "build": "babel src --out-dir .",
+    "prepublish": "npm test; npm run build"
   },
   "files": [
     "local.js",
