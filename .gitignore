@@ -3,6 +3,7 @@ node_modules
 local.js
 sync.js
 index.js
+utils.js
 !src/*
 
 coverage/

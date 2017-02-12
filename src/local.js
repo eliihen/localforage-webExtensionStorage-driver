@@ -1,77 +1,66 @@
+import { getStorage, usePromise } from './utils';
+
 export default {
   _driver: 'webExtensionLocalStorage',
-  _support: !!(chrome && chrome.storage && chrome.storage.local),
+  _support: !!(getStorage() && getStorage().local),
   _initStorage() {
     return Promise.resolve();
   },
-  clear(callback) {
-    browser.storage.local.clear();
+
+  async clear(callback) {
+    getStorage().local.clear();
 
     if (callback) callback();
-
-    return Promise.resolve();
   },
-  iterate(iterator, callback) {
-    return browser.storage.local
-      .get(null)
-      .then(items => {
-        const keys = Object.keys(items);
 
-        keys.forEach((key, i) => iterator({ [key]: items[key] }, i));
+  async iterate(iterator, callback) {
+    const items = await usePromise(getStorage().local.get, null);
+    const keys = Object.keys(items);
+    keys.forEach((key, i) => iterator({ [key]: items[key] }, i));
 
-        if (callback) callback();
-      });
+    if (callback) callback();
   },
-  getItem(key, callback) {
-    return browser.storage.local
-      .get(key)
-      .then(result => (
-        typeof key === 'string' ? result[key] : result
-      ))
-      .then(callback);
+
+  async getItem(key, callback) {
+    let result = await usePromise(getStorage().local.get, key);
+    result = typeof key === 'string' ? result[key] : result;
+
+    if (callback) callback(result);
+    return result;
   },
-  key(n, callback) {
-    return browser.storage.local
-      .get(null)
-      .then(results => {
-        const key = Object.keys(results)[n];
 
-        if (callback) callback(key);
+  async key(n, callback) {
+    const results = await usePromise(getStorage().local.get, null);
+    const key = Object.keys(results)[n];
 
-        return key;
-      });
+    if (callback) callback(key);
+    return key;
   },
-  keys(callback) {
-    return browser.storage.local
-      .get(null)
-      .then(results => {
-        const keys = Object.keys(results);
 
-        if (callback) callback(keys);
+  async keys(callback) {
+    const results = await usePromise(getStorage().local.get, null);
+    const keys = Object.keys(results);
 
-        return keys;
-      });
+    if (callback) callback(keys);
+    return keys;
   },
-  length(callback) {
-    return browser.storage.local
-      .get(null)
-      .then(results => {
-        const length = Object.keys(results).length;
 
-        if (callback) callback(length);
+  async length(callback) {
+    const results = await usePromise(getStorage().local.get, null);
+    const length = Object.keys(results).length;
 
-        return length;
-      });
+    if (callback) callback(length);
+    return length;
   },
-  removeItem(key, callback) {
-    return browser.storage.local
-      .remove(key)
-      .then(callback);
+
+  async removeItem(key, callback) {
+    await usePromise(getStorage().local.remove, key);
+    if (callback) callback();
   },
-  setItem(key, value, callback) {
-    return browser.storage.local
-      .set({ [key]: value })
-      .then(callback);
+
+  async setItem(key, value, callback) {
+    await usePromise(getStorage().local.set, { [key]: value });
+    if (callback) callback();
   },
 };
 

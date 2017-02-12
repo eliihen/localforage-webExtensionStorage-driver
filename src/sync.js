@@ -1,77 +1,66 @@
+import { getStorage, usePromise } from './utils';
+
 export default {
   _driver: 'webExtensionSyncStorage',
-  _support: !!(chrome && chrome.storage && chrome.storage.sync),
+  _support: !!(getStorage() && getStorage().sync),
   _initStorage() {
     return Promise.resolve();
   },
-  clear(callback) {
-    browser.storage.sync.clear();
+
+  async clear(callback) {
+    getStorage().sync.clear();
 
     if (callback) callback();
-
-    return Promise.resolve();
   },
-  iterate(iterator, callback) {
-    return browser.storage.sync
-      .get(null)
-      .then(items => {
-        const keys = Object.keys(items);
 
-        keys.forEach((key, i) => iterator({ [key]: items[key] }, i));
+  async iterate(iterator, callback) {
+    const items = await usePromise(getStorage().sync.get, null);
+    const keys = Object.keys(items);
+    keys.forEach((key, i) => iterator({ [key]: items[key] }, i));
 
-        if (callback) callback();
-      });
+    if (callback) callback();
   },
-  getItem(key, callback) {
-    return browser.storage.sync
-      .get(key)
-      .then(result => (
-        typeof key === 'string' ? result[key] : result
-      ))
-      .then(callback);
+
+  async getItem(key, callback) {
+    let result = await usePromise(getStorage().sync.get, key);
+    result = typeof key === 'string' ? result[key] : result;
+
+    if (callback) callback(result);
+    return result;
   },
-  key(n, callback) {
-    return browser.storage.sync
-      .get(null)
-      .then(results => {
-        const key = Object.keys(results)[n];
 
-        if (callback) callback(key);
+  async key(n, callback) {
+    const results = await usePromise(getStorage().sync.get, null);
+    const key = Object.keys(results)[n];
 
-        return key;
-      });
+    if (callback) callback(key);
+    return key;
   },
-  keys(callback) {
-    return browser.storage.sync
-      .get(null)
-      .then(results => {
-        const keys = Object.keys(results);
 
-        if (callback) callback(keys);
+  async keys(callback) {
+    const results = await usePromise(getStorage().sync.get, null);
+    const keys = Object.keys(results);
 
-        return keys;
-      });
+    if (callback) callback(keys);
+    return keys;
   },
-  length(callback) {
-    return browser.storage.sync
-      .get(null)
-      .then(results => {
-        const length = Object.keys(results).length;
 
-        if (callback) callback(length);
+  async length(callback) {
+    const results = await usePromise(getStorage().sync.get, null);
+    const length = Object.keys(results).length;
 
-        return length;
-      });
+    if (callback) callback(length);
+    return length;
   },
-  removeItem(key, callback) {
-    return browser.storage.sync
-      .remove(key)
-      .then(callback);
+
+  async removeItem(key, callback) {
+    await usePromise(getStorage().sync.remove, key);
+    if (callback) callback();
   },
-  setItem(key, value, callback) {
-    return browser.storage.sync
-      .set({ [key]: value })
-      .then(callback);
+
+  async setItem(key, value, callback) {
+    await usePromise(getStorage().sync.set, { [key]: value });
+    if (callback) callback();
   },
 };
 
