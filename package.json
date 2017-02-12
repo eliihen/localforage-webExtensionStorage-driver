@@ -12,7 +12,8 @@
   },
   "files": [
     "local.js",
-    "sync.js"
+    "sync.js",
+    "utils.js"
   ],
   "author": "Espen Henriksen",
   "license": "MIT",
