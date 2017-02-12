@@ -1,3 +1,7 @@
+1.1.2
+---
+- No longer require `babel-polyfill` by utilizing `babel-runtime`
+
 1.1.1
 ---
 - Add missing file from package.json
