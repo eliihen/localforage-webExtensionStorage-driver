@@ -17,6 +17,11 @@ localforage
 // When this promise resolves, a new driver should be set
 ```
 
+## Install
+```bash
+$ npm install --save localforage-webextensionstorage-driver
+```
+
 ## API
 
 |Import Path                                 |Driver Name (`setDriver`)|Description                      |
