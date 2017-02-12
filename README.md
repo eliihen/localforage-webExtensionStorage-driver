@@ -17,3 +17,9 @@ localforage
 // When this promise resolves, a new driver should be set
 ```
 
+## API
+
+|Import Path                                 |Driver Name (`setDriver`)|Description                      |
+|--------------------------------------------|-------------------------|---------------------------------|
+|localforage-webextensionstorage-driver/local|webExtensionLocalStorage |chrome/browser.local storage area|
+|localforage-webextensionstorage-driver/sync |webExtensionSyncStorage  |chrome/browser.sync storage area |
