@@ -20,15 +20,15 @@
     "localforage": "^1.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
+    "babel-cli": "^6.22.2",
     "babel-plugin-transform-async-to-generator": "^6.22.0",
-    "babel-preset-latest": "^6.16.0",
+    "babel-preset-latest": "^6.22.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
-    "jest": "^17.0.3",
+    "jest": "^18.1.0",
     "localforage": "^1.4.3"
   },
   "jest": {
