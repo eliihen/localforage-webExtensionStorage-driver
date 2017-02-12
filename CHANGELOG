@@ -1,0 +1,13 @@
+1.1.0
+---
+- Support both browser.storage and chrome.storage, defaulting to the former
+- Internal rewrite, now heavily uses async functions
+
+1.0.1
+---
+- Use browser.storage API instead of chrome.storage
+
+1.0.0
+---
+- Initial release
+
