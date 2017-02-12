@@ -18,7 +18,7 @@ function usesPromises() {
       && storage.local.get
       && storage.local.get()
       && typeof storage.local.get().then === 'function';
-  } catch(e) {
+  } catch (e) {
     return false;
   }
 }
