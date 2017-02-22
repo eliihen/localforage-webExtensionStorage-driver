@@ -15,7 +15,8 @@
   "files": [
     "local.js",
     "sync.js",
-    "utils.js"
+    "utils.js",
+    "browser.js"
   ],
   "author": "Espen Henriksen",
   "license": "MIT",
