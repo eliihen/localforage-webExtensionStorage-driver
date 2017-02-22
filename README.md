@@ -7,7 +7,7 @@ This project adds a webextension driver to localForage
 
 ## Usage
 
-Using a module bundler:
+### Using a module bundler:
 
 ```javascript
 import localforage from 'localforage';
@@ -19,7 +19,7 @@ localforage
 // When this promise resolves, a new driver should be set
 ```
 
-Using plain javascript:
+### Using plain javascript:
 
 This project was not originally intended to be used without a module bundler
 like webpack, so the result will be a larger file if you do it this way.
