@@ -6,7 +6,9 @@
   "module": "src/index.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "babel src --out-dir .",
+    "build": "npm run babel; npm run browserify",
+    "babel": "babel src --out-dir .",
+    "browserify": "browserify -e index.js -s webExtensionStorageDriver -o browser.js",
     "lint": "eslint src/",
     "prepublish": "npm test; npm run build"
   },
@@ -25,6 +27,7 @@
     "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-latest": "^6.22.0",
+    "browserify": "^14.1.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-import": "^2.1.0",

@@ -7,3 +7,4 @@ utils.js
 !src/*
 
 coverage/
+browser.js
