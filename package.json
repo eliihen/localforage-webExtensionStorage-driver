@@ -4,6 +4,7 @@
   "description": "LocalForage storage driver for WebExtension storage APIs",
   "main": "index.js",
   "module": "src/index.js",
+  "typings": "typings/localforage-webextensionstorage-driver.d.ts",
   "scripts": {
     "test": "jest --coverage",
     "build": "npm run babel; npm run browserify",
