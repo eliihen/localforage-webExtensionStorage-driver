@@ -1,3 +1,7 @@
+1.2.0
+---
+- Add typescript typings (thanks @Nightbr!)
+
 1.1.2
 ---
 - No longer require `babel-polyfill` by utilizing `babel-runtime`
