@@ -17,7 +17,8 @@
     "local.js",
     "sync.js",
     "utils.js",
-    "browser.js"
+    "browser.js",
+    "typings/localforage-webextensionstorage-driver.d.ts"
   ],
   "author": "Espen Henriksen",
   "license": "MIT",
