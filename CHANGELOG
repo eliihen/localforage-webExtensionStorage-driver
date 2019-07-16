@@ -1,3 +1,8 @@
+1.2.1
+---
+- Fix chrome 72 compatibility by binding storage methods (thanks @csimi!)
+- Fix issue with typings not being exposed in the npm package (thanks @joelshepherd!)
+
 1.2.0
 ---
 - Add typescript typings (thanks @Nightbr!)
