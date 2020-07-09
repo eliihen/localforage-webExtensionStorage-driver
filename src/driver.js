@@ -39,6 +39,7 @@ export default function createDriver(name, property) {
     async getItem(key, callback) {
       let result = await usePromise(get, key);
       result = typeof key === 'string' ? result[key] : result;
+      result = result === undefined ? null : result;
 
       if (callback) callback(result);
       return result;

@@ -24,7 +24,7 @@
   "author": "Espen Henriksen",
   "license": "MIT",
   "peerDependencies": {
-    "localforage": "^1.1.0"
+    "localforage": "^1.7.4"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
@@ -38,7 +38,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
     "jest": "^18.1.0",
-    "localforage": "^1.4.3"
+    "localforage": "^1.7.4"
   },
   "jest": {
     "testURL": "https://www.example.com",

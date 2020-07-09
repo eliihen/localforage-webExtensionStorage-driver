@@ -103,6 +103,19 @@ describe('local', () => {
         expect(result).toEqual('qrux');
       });
     });
+
+    it('should return null in callback and promise if data is not set', () => {
+      const spy = jest.fn();
+      testStore.getItem('bar', spy).then((promiseResult) => {
+
+        // validate callback
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith(null, null); // first null for no error, second for ret
+
+        // validate promise
+        expect(promiseResult).toBeNull();
+      });
+    });
   });
 
   describe('key', () => {
