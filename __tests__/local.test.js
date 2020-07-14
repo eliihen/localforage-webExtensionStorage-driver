@@ -106,7 +106,7 @@ describe('local', () => {
 
     it('should return null in callback and promise if data is not set', () => {
       const spy = jest.fn();
-      testStore.getItem('bar', spy).then((promiseResult) => {
+      return testStore.getItem('bar', spy).then((promiseResult) => {
 
         // validate callback
         expect(spy).toHaveBeenCalledTimes(1);
@@ -217,4 +217,3 @@ describe('local', () => {
     });
   });
 });
-
