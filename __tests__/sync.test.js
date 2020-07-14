@@ -89,7 +89,7 @@ describe('sync', () => {
     it('should remove an item from the store and call callback', () => {
       const spy = jest.fn();
       return testStore.getItem('foo', spy).then(() => {
-        expect(spy).toHaveBeenCalledWith('qrux');
+        expect(spy).toHaveBeenCalledWith(null, 'qrux');
         expect(window.chrome.storage.sync.get).toHaveBeenCalledWith('foo');
       });
     });
@@ -101,6 +101,19 @@ describe('sync', () => {
       return result.then(result => {
         expect(window.chrome.storage.sync.get).toHaveBeenCalledWith('foo');
         expect(result).toEqual('qrux');
+      });
+    });
+
+    it('should return null in callback and promise if data is not set', () => {
+      const spy = jest.fn();
+      return testStore.getItem('bar', spy).then((promiseResult) => {
+
+        // validate callback
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith(null, null); // first null for no error, second for ret
+
+        // validate promise
+        expect(promiseResult).toBeNull();
       });
     });
   });
