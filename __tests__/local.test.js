@@ -89,7 +89,7 @@ describe('local', () => {
     it('should remove an item from the store and call callback', () => {
       const spy = jest.fn();
       return testStore.getItem('foo', spy).then(() => {
-        expect(spy).toHaveBeenCalledWith('qrux');
+        expect(spy).toHaveBeenCalledWith(null, 'qrux');
         expect(window.chrome.storage.local.get).toHaveBeenCalledWith('foo');
       });
     });
