@@ -1,3 +1,7 @@
+1.2.2
+---
+- Fix incompatability with localforage, `get` to return null when fetching a key with no data (thanks @fohletex!)
+
 1.2.1
 ---
 - Fix chrome 72 compatibility by binding storage methods (thanks @csimi!)

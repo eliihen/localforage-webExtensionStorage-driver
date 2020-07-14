@@ -1,6 +1,6 @@
 {
   "name": "localforage-webextensionstorage-driver",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "LocalForage storage driver for WebExtension storage APIs",
   "main": "index.js",
   "module": "src/index.js",
