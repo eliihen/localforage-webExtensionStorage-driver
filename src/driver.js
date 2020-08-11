@@ -31,7 +31,7 @@ export default function createDriver(name, property) {
     async iterate(iterator, callback) {
       const items = await usePromise(get, null);
       const keys = Object.keys(items);
-      keys.forEach((key, i) => iterator({ [key]: items[key] }, i));
+      keys.forEach((key, i) => iterator(items[key], key, i));
 
       if (callback) callback();
     },
@@ -44,12 +44,10 @@ export default function createDriver(name, property) {
 
         if (callback) callback(null, result);
         return result;
-      }
-      catch (e) {
+      } catch (e) {
         if (callback) {
           callback(e);
-        }
-        else {
+        } else {
           throw e;
         }
       }
