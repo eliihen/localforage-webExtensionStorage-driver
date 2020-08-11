@@ -5,7 +5,6 @@ module.exports = {
     jest: true,
   },
   extends: 'airbnb',
-  installedESLint: true,
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,

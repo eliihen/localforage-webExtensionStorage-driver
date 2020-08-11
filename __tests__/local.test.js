@@ -87,7 +87,7 @@ describe('local', () => {
   });
 
   describe('getItem', () => {
-    it('should remove an item from the store and call callback', () => {
+    it('should get an item from the store and call callback', () => {
       const spy = jest.fn();
       return testStore.getItem('foo', spy).then(() => {
         expect(spy).toHaveBeenCalledWith(null, 'qrux');
@@ -95,7 +95,7 @@ describe('local', () => {
       });
     });
 
-    it('should remove an item from the store and call promise', () => {
+    it('should get an item from the store and call promise', () => {
       const result = testStore.getItem('foo');
       expect(result).toBeInstanceOf(Promise);
 

@@ -45,11 +45,8 @@ export default function createDriver(name, property) {
         if (callback) callback(null, result);
         return result;
       } catch (e) {
-        if (callback) {
-          callback(e);
-        } else {
-          throw e;
-        }
+        if (callback) callback(e);
+        throw e;
       }
     },
 
