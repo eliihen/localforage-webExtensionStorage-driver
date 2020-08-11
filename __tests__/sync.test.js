@@ -1,7 +1,8 @@
 import localforage from 'localforage';
 
 import syncDriver from '../src/sync';
-import resetMocks from '../setupTests.js';
+import resetMocks from '../setupTests';
+import iterator from '../lib/testIterator';
 
 beforeEach(resetMocks);
 
@@ -166,13 +167,6 @@ describe('sync', () => {
   describe('iterate', () => {
     it('should iterate over the store and call callback', () => {
       const spy = jest.fn();
-      const iterator = (item, i) => {
-        if (i === 0) {
-          expect(item).toEqual({ foobar: 'duffman' });
-        } else {
-          expect(item).toEqual({ walpole: 'shiv' });
-        }
-      };
 
       return testStore.iterate(iterator, spy).then(() => {
         expect(spy).toHaveBeenCalled();
@@ -181,13 +175,6 @@ describe('sync', () => {
     });
 
     it('should iterate over the store and call promise', () => {
-      const iterator = (item, i) => {
-        if (i === 0) {
-          expect(item).toEqual({ foobar: 'duffman' });
-        } else {
-          expect(item).toEqual({ walpole: 'shiv' });
-        }
-      };
       const result = testStore.iterate(iterator);
       expect(result).toBeInstanceOf(Promise);
 
