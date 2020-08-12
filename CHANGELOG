@@ -1,3 +1,8 @@
+2.0.0
+---
+- BREAKING: The iterator API was incompatible with the localforage API. It now returns a method, which takes `(value, key, index)` as parameters instead of the previous API where it recieved the item and index.
+- Updates dependencies
+
 1.2.2
 ---
 - Fix incompatability with localforage, `get` to return null when fetching a key with no data (thanks @fohletex!)
