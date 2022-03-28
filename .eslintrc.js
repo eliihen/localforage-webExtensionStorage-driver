@@ -8,9 +8,9 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
-      jsx: true
+      jsx: true,
     },
-    sourceType: 'module'
+    sourceType: 'module',
   },
   globals: {
     browser: false,
@@ -25,6 +25,6 @@ module.exports = {
      */
     'import/no-named-as-default': 0,
     'import/extensions': [2, 'never'],
-    'react/jsx-filename-extension': [1, { 'extensions': ['.js'] }],
-  }
+    'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
+  },
 };

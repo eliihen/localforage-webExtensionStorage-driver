@@ -38,4 +38,3 @@ export function usePromise(fn, arg) {
     });
   });
 }
-

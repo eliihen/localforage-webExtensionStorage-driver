@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import localforage from 'localforage';
 
 import localDriver from '../src/local';
