@@ -1,3 +1,8 @@
+3.0.0
+---
+- Fix window reference to support chrome manifest v3 (Thanks @fohletex!)
+- Update dependencies (Thanks @fohletex!)
+
 2.0.0
 ---
 - BREAKING: The iterator API was incompatible with the localforage API. It now returns a method, which takes `(value, key, index)` as parameters instead of the previous API where it recieved the item and index.
