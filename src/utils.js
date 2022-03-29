@@ -3,8 +3,8 @@
  * pass with mocked browser and chrome objects
  */
 export function getStorage() {
-  return (window.browser && browser.storage)
-    || (window.chrome && chrome.storage);
+  return (typeof browser !== 'undefined' && browser.storage)
+      || (typeof chrome !== 'undefined' && chrome.storage);
 }
 
 /**
@@ -38,4 +38,3 @@ export function usePromise(fn, arg) {
     });
   });
 }
-

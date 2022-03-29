@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import localforage from 'localforage';
 
 import syncDriver from '../src/sync';

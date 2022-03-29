@@ -34,6 +34,6 @@ export default function resetMocks() {
   get.mockClear();
   remove.mockClear();
   set.mockClear();
-};
+}
 
 resetMocks();

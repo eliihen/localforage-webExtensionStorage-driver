@@ -18,6 +18,7 @@ export default function createDriver(name, property) {
   return {
     _driver: name,
     _support: support,
+    // eslint-disable-next-line no-underscore-dangle
     _initStorage() {
       return Promise.resolve();
     },
@@ -68,7 +69,7 @@ export default function createDriver(name, property) {
 
     async length(callback) {
       const results = await usePromise(get, null);
-      const length = Object.keys(results).length;
+      const { length } = Object.keys(results);
 
       if (callback) callback(length);
       return length;
